@@ -27,6 +27,15 @@ namespace trackingapi.Controllers
             return issue == null ? NotFound() : Ok(issue);
         }
 
+        [HttpGet("search/{title}")]
+        [ProducesResponseType(typeof(Issue), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetByTitle(string title)
+        {
+            var issue = await _context.Issues.SingleOrDefaultAsync(c=> c.Title == title);
+            return issue == null ? NotFound() : Ok(issue);
+        }
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Create(Issue issue)
