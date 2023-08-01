@@ -14,14 +14,22 @@ response.EnsureSuccessStatusCode();
 if(response.IsSuccessStatusCode)
 {
     var issues = await response.Content.ReadFromJsonAsync<IEnumerable<IssueDto>>();
-    foreach (var issue in issues)
+    if(issues.Any())
     {
-        Console.WriteLine(issue.Title);
+        foreach (var issue in issues)
+        {
+            Console.WriteLine(issue.Title);
+        }
     }
+    else
+    {
+        Console.WriteLine("No data to display");
+    }
+    
 }
 else
 {
-    Console.WriteLine("No results");
+    Console.WriteLine("Can't fetch data...");
 }
 
 Console.ReadLine();
