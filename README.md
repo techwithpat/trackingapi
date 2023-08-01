@@ -9,7 +9,7 @@ To run the application, follow these steps:
 3. Set the trackingapi project as the startup project.
 4. Run the application.
 
-The Web API uses a SqlServer database to store issues. 
+The Web API uses a SQLite database to store issues but you can choose any EF Core provider you like. 
 To run the client console application, follow these steps:
 1. Right-click on the project tracking.client.
 2. Run the application.
